@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Layout</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.2.0/mustache.min.js"></script>
+</head>
+<body>
+    <header class="container-fluid py-3">
+        <div class="row align-items-center">
+            <div class="col-4 col-md-2">
+                <a href="landing_mustache.html" aria-label="Home">
+                    <img src="logo.png" alt="Company Logo" class="img-fluid" />
+                </a>
+            </div>
+            <div class="col-8 col-md-10 d-flex justify-content-end">
+                <nav class="nav"></nav>
+            </div>
+        </div>
+    </header>
+    <main class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 text-center">
+                <div class="search-bar mb-3">
+                    <input type="text" placeholder="Search" aria-label="Search" />
+                    <button aria-label="Search button"><i class="fa fa-search"></i></button>
+                </div>
+                <button class="btn btn-primary">Browse Catalogue</button>
+            </div>
+        </div>
+    </main>
+    <footer class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12 col-md-4 d-flex justify-content-center justify-content-md-start">
+                <div class="socials">
+                    <a href="facebook.com" class="mr-2"><i class="fa fa-facebook"></i></a>
+                    <a href="instagram.com"><i class="fa fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 text-center">
+                <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="#">Legals</a>
+            </div>
+            <div class="col-12 col-md-4 d-flex justify-content-center justify-content-md-end">
+                <address>1234 Street, City, Country</address>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var navTemplate = document.getElementById('nav-template').innerHTML;
+            var navData = {
+                navLinks: [
+                    { url: '#', name: 'About' },
+                    { url: '#', name: 'Categories' }
+                ]
+            };
+            var renderedNav = Mustache.render(navTemplate, navData);
+            document.querySelector('nav.nav').innerHTML = renderedNav;
+        });
+    </script>
+    <script id="nav-template" type="x-tmpl-mustache">
+        {{#navLinks}}
+        <a href="{{url}}" class="nav-link">{{name}}</a>
+        {{/navLinks}}
+    </script>
+</body>
+</html>

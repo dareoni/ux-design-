@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>A Web Page</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.2.0/mustache.min.js"></script>
+</head>
+<body>
+
+  <header class="bg-pink py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo-container">
+        <img src="{{logoSrc}}" alt="Company Logo" aria-label="Company Logo" class="logo img-fluid">
+      </div>
+      <nav>
+        <ul class="nav">
+          {{#navLinks}}
+          <li class="nav-item"><a class="nav-link text-white" href="{{url}}">{{text}}</a></li>
+          {{/navLinks}}
+        </ul>
+      </nav>
+      <div class="search-container">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search area">
+      </div>
+    </div>
+  </header>
+
+  <main class="container my-4">
+    <section class="row">
+      <div class="col-md-9">
+        {{#products}}
+        <div class="product row mb-4">
+          <div class="col-md-3">
+            <img src="{{imgSrc}}" alt="{{imgAlt}}" width="600" height="400" class="img-fluid product-img">
+          </div>
+          <div class="col-md-6">
+            <p class="product-description">{{description}}</p>
+          </div>
+          <div class="col-md-3">
+            <p class="price">${{price}}</p>
+          </div>
+        </div>
+        {{/products}}
+        <!-- Pagination -->
+        <nav>
+          <ul class="pagination justify-content-center">
+            {{#pagination}}
+            <li class="page-item"><a class="page-link" href="#">{{page}}</a></li>
+            {{/pagination}}
+          </ul>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-pink text-white py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="socials mb-3">
+            {{#socialLinks}}
+            <a href="{{url}}" class="text-white mr-3"><img src="{{icon}}" alt="{{alt}}" class="social-icon"></a>
+            {{/socialLinks}}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="legal-links mb-3">
+            {{#legalLinks}}
+            <a href="{{url}}" class="text-white d-block">{{text}}</a>
+            {{/legalLinks}}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <p class="mb-0">{{address}}</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const data = {
+      logoSrc: "logo.png",
+      navLinks: [
+        {url: "#home", text: "Home"},
+        {url: "#categories", text: "Categories"}
+      ],
+      products: [
+        {imgSrc: "laptop.jpeg", imgAlt: "Laptop Image", description: "Experience the perfect blend of performance and portability with our latest laptop", price: 700},
+        {imgSrc: "camera.jpeg", imgAlt: "Camera Image", description: "Come experience a blend of the best image quality from our range of digital cameras.", price: 1100}
+      ],
+      pagination: [
+        {page: "Prev"}, {page: "1"}, {page: "2"}, {page: "3"},
+        {page: "4"}, {page: "5"}, {page: "6"}, {page: "7"},
+        {page: "..."}, {page: "15"}, {page: "Next"}
+      ],
+      socialLinks: [
+        {url: "#facebook", icon: "facebook-icon.png", alt: "Facebook"},
+        {url: "#instagram", icon: "instagram-icon.png", alt: "Instagram"}
+      ],
+      legalLinks: [
+        {url: "#privacy-policy", text: "Privacy Policy"},
+        {url: "#terms-of-use", text: "Terms of Use"},
+        {url: "#legals", text: "Legals"}
+      ],
+      address: "1234 Street, City, Country"
+    };
+
+    const template = document.body.innerHTML;
+    document.body.innerHTML = Mustache.render(template, data);
+  </script>
+
+</body>
+</html>

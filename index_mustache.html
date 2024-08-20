@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>{{title}}</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.2.0/mustache.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const templateHTML = document.body.innerHTML;
+      const templateData = {
+        title: "Responsive Grid Layout",
+        logoSrc: "logo.png",
+        logoAlt: "Company Logo",
+        navLinks: [
+          { href: "product_page.html", text: "Home" },
+          { href: "landing_page.html", text: "Categories" }
+        ],
+        searchPlaceholder: "Search",
+        companyInfo: "Company Info: Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        articles: [
+          { content: "Article 1" },
+          { content: "Article 2" },
+          { content: "Article 3" }
+        ],
+        socialLinks: [
+          { href: "#facebook", iconSrc: "facebook-icon.png", alt: "Facebook" },
+          { href: "#instagram", iconSrc: "instagram-icon.png", alt: "Instagram" }
+        ],
+        legalLinks: [
+          { href: "#privacy-policy", text: "Privacy Policy" },
+          { href: "#terms-of-use", text: "Terms of Use" },
+          { href: "#legals", text: "Legals" }
+        ],
+        address: "1234 Street, City, Country"
+      };
+    });
+    const renderedHTML = Mustache.render(templateHTML, templateData);
+      document.body.innerHTML = renderedHTML;
+  </script>
+</head>
+
+<body>
+  <header class="bg-dark text-white py-2">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo-container">
+        <img src="{{logoSrc}}" alt="{{logoAlt}}" aria-label="{{logoAlt}}" class="logo img-fluid">
+      </div>
+      <nav>
+        <ul class="nav">
+          {{#navLinks}}
+          <li class="nav-item"><a class="nav-link text-white" href="{{href}}">{{text}}</a></li>
+          {{/navLinks}}
+          <li class="nav-item">
+            <form class="form-inline">
+              <input class="form-control mr-sm-2" type="search" placeholder="{{searchPlaceholder}}" aria-label="Search">
+            </form>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container my-4">
+    <section class="company-info mb-4">
+      <p>{{companyInfo}}</p>
+    </section>
+    <section class="row">
+      {{#articles}}
+      <div class="col-12 col-md-6 col-lg-4 mb-4">
+        <div class="article p-3 bg-light border rounded text-center">{{content}}</div>
+      </div>
+      {{/articles}}
+    </section>
+  </main>
+
+  <footer class="bg-dark text-white py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="socials mb-3">
+            {{#socialLinks}}
+            <a href="{{href}}" class="text-white mr-2"><img src="{{iconSrc}}" alt="{{alt}}"></a>
+            {{/socialLinks}}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="legal-links mb-3">
+            {{#legalLinks}}
+            <a href="{{href}}" class="text-white d-block">{{text}}</a>
+            {{/legalLinks}}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <p class="mb-0">{{address}}</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>

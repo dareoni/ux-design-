@@ -1,0 +1,132 @@
+/* General styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fef7fb;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header styles */
+header {
+  background-color: #ff6f91;
+}
+
+header .logo-container {
+  display: flex;
+  align-items: center;
+}
+
+header .logo {
+  max-height: 40px;
+}
+
+header .nav-link {
+  color: white !important;
+  margin-right: 15px;
+}
+
+header .nav-link:hover {
+  color: #fef7fb !important;
+}
+
+header .form-control {
+  border: none;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+
+/* Main content styles */
+main {
+  padding: 20px 0;
+  background-image: url('landing_image.jpeg');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-attachment: fixed; 
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.company-info {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.articles .article {
+  background-color: #ffb3c1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.articles .article:hover {
+  transform: translateY(-5px);
+}
+
+/* Footer styles */
+footer {
+  background-color: #ff6f91;
+  color: white;
+  padding: 20px 0;
+}
+
+footer .socials a {
+  color: white;
+  margin-right: 15px;
+}
+
+footer .socials a:hover {
+  color: #ffb3c1;
+}
+
+footer .legal-links a {
+  color: white;
+  display: block;
+  margin-bottom: 5px;
+  text-decoration: none;
+}
+
+footer .legal-links a:hover {
+  color: #ffb3c1;
+}
+
+footer .address p {
+  margin: 0;
+  color: white;
+}
+
+/* Custom button styles */
+.btn-custom {
+  background-color: #ff6f91;
+  color: white;
+  border-radius: 20px;
+  padding: 10px 20px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #ff4a68;
+}
+
+/* Media Queries for responsiveness */
+@media (min-width: 600px) {
+  .articles .article {
+    min-height: 150px;
+  }
+}
+
+@media (min-width: 900px) {
+  header .nav-link {
+    margin-right: 20px;
+  }
+}
